@@ -10,7 +10,7 @@ if [ -z "$TAILLOG" ]; then
     export TAILLOG=/var/log/*.log
 fi
 
-cd /app
+cd /usr/src/app
 # 启动node服务
 npm start
 # 日志监听，保持容器持续运行不退出
