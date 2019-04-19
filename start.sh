@@ -10,8 +10,18 @@ if [ -z "$TAILLOG" ]; then
     export TAILLOG=/var/log/*.log
 fi
 
-cd /usr/src/app
+# Logs
+pod_name=$(hostname)
+mkdir -p /logs/${pod_name}
+mkdir -p /data/${pod_name}
+mkdir -p /monitor/${pod_name}
+
+ln -s  /logs/${pod_name} logs
+ln -s  /data/${pod_name} data
+
 # 启动node服务
+cd /usr/src/app
 npm start
+
 # 日志监听，保持容器持续运行不退出
-tail -f $TAILLOG
+# tail -f $TAILLOG
